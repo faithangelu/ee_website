@@ -1,0 +1,104 @@
+/*!
+ * Energy Exchange 
+ * Copyright 2013-2020 Start Bootstrap
+ * 
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+.navbar {
+    z-index: 9;
+    background-color: #1b1940;
+}
+
+.nav-item {
+    align-self: center;
+    padding: 0 0.8rem;
+}
+
+.nav-item a {
+    font-weight : 500;
+}
+
+.masthead {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#inputGroupSelect02 {
+    border-radius: 0;
+    height: 4rem;
+}
+
+.heading {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.subheading {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.text-bluish {
+    color: #1ebef9;    
+}
+
+.btn-outline-secondary {
+    /* padding-left: 5rem; */
+    /* padding-right: 5rem; */
+    background-color: black;
+    border-color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+input[type="text"]::-ms-input-placeholder, 
+input[type="text"]::placeholder {  
+                  
+    /* Firefox, Chrome, Opera */ 
+    text-align: center; 
+} 
+
+
+/* // text animation */
+.text-bluish {
+    color: #fff;
+    /* font-size: 92px; */
+    /* font-family: "ubuntu"; */
+    text-transform: uppercase;
+    font-weight: 900;
+    font-family: "Josefin Sans", sans-serif;
+    background: linear-gradient(to right, #1ebef9 10%, #fff 50%, #1ebef9 60%);
+    /* background-size: auto auto; */
+    /* background-clip: border-box; */
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    /* display: inline-block; */
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}

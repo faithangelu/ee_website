@@ -1,0 +1,32 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700');
+
+// Variables
+@import 'variables';
+$fa-font-path:        "../webfonts";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~admin-lte/dist/css/adminlte.css';
+// @import 'vuetify/dist/vuetify.min.css'
+
+
+
+// Font awesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+
+.router-exact-link-active,
+.router-link-active
+{
+    background-color: #6f345a!important;
+    // color: white;
+}    
+
+// [class*='sidebar-dark-'] .sidebar a {
+//     background-color: #6f345a!important;
+// }
+
