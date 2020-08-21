@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Customer;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -29,7 +29,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/marketplace';
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -50,10 +51,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'status' => ['required', 'string', 'min:6']
+            'customer_first_name' => ['required', 'string', 'max:255'],
+            'customer_last_name' => ['required', 'string', 'max:255'],
+            'customer_email' => ['required', 'string', 'email', 'max:255', 'unique:customers'],
+            'customer_username' => ['required', 'string', 'max:255'],
+            'customer_password' => ['required', 'string', 'min:8', 'confirmed'],
+            'customer_user_type' => ['required', 'string', 'min:3'],
+            'customer_status' => ['required', 'string', 'min:3']
         ]);
     }
 
@@ -65,11 +69,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'status' => $data['status'],
+        // print_r($data);exit;
+        return Customer::create([
+            'customer_first_name' => $data['customer_first_name'],
+            'customer_last_name' => $data['customer_last_name'],
+            'customer_email' => $data['customer_email'],
+            'customer_username' => $data['customer_username'],
+            'customer_password' => Hash::make($data['customer_password']),
+            'customer_user_type' => $data['customer_user_type'],
+            'customer_status' => $data['customer_status'],
         ]);
     }
 }

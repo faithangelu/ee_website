@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 class WebsiteController extends Controller
 {
+   
     public function index() 
     {
         $marketplaces = DB::select('select * from marketplaces');

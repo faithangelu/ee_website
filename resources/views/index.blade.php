@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
+  <title>{{ config('app.name', 'Energy Exchange') }}</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('website/vendor/bootstrap/css/bootstrap.min.css') }} " rel="stylesheet">
@@ -83,8 +83,8 @@
           <div class="clearfix">
             
             <div class="input-group w-75 mx-auto">
-              <select class="custom-select text-center rounded-0"  id="inputGroupSelect02" aria-placeholder="FIND THE LOCATION">
-                <option selected class="placeholder">FIND THE LOCATION</option>
+              <select class="custom-select text-center rounded-0"  id="inputGroupSelect02" aria-placeholder="FIND A LOCATION">
+                <option selected class="placeholder">FIND A LOCATION</option>
                 @foreach ($marketplaces as $marketplace)
                 <option value="3">{{ $marketplace->project_location }}</option>
                 @endforeach

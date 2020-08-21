@@ -13,11 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Auth::routes();
+// Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('login', 'AuthController@showLoginForm')->name('login'); 
+Route::post('login', 'AuthController@user_login')->name('user_login');
+
+Route::get('register', 'AuthController@showRegisterForm')->name('register');
+Route::post('register', 'AuthController@register')->name('register');
+
+Route::get('dashboard', 'AuthController@dashboard'); 
+
+Route::get('logout', 'AuthController@logout')->name('logout');
 
 Route::get('/', 'WebsiteController@index')->name('index');
-// Route::get('/wblogin', 'WebsiteController@login')->name('login');
-Route::get('/marketplace', 'UserController@marketplace')->name('marketplace');
-Route::get('/homie', 'HomeController@index')->name('home');
+Route::get('/home', 'UserController@marketplace')->name('home');
+Route::get('/profile', 'UserController@profile')->name('profile');
 
 
-Auth::routes();
