@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/uromaq4e0n8b/public_html/testenex.aiv.com.ph/
+    - export DEPLOYPATH=/home/uromaq4e0n8b/public_html/test-enex.aiv.com.ph/
     - /bin/cp -r * $DEPLOYPATH #copy all from root
 #    - /bin/cp -r ./public/* $DEPLOYPATH/public_html/
     # - /bin/cp ./public/js/*.js $DEPLOYPATH/public_html/js
