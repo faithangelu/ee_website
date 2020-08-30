@@ -25,3 +25,11 @@ body {
     text-transform: none;
     font-size: small;
 } 
+
+p.project-desc {
+    height: 5rem;
+}
+
+.liked {
+    color : red;
+}

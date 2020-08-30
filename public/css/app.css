@@ -13264,8 +13264,9 @@ html.control-sidebar-animate {
 .control-sidebar {
   bottom: calc(3.5rem + 1px);
   position: absolute;
-  top: calc(3.5rem + 1px);
+  top: calc(8rem + 1px);
   z-index: 1031;
+  height: 100vh;
 }
 
 .control-sidebar, .control-sidebar::before {
@@ -15888,7 +15889,7 @@ textarea.form-control.is-warning {
 }
 
 .card-primary.card-outline {
-  border-top: 3px solid #007bff;
+  border-top: 3px solid #343a40;
 }
 
 .card-primary.card-outline-tabs > .card-header a:hover {
@@ -20322,10 +20323,7 @@ html.maximized-card {
 .register-page {
   -ms-flex-align: center;
   align-items: center;
-  background: url('/images/bg-login3.webp');
-  image-rendering: -webkit-optimize-contrast;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #e9ecef;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -20333,16 +20331,6 @@ html.maximized-card {
   height: 100vh;
   -ms-flex-pack: center;
   justify-content: center;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #212529;
-  opacity: .5;
 }
 
 .login-box,

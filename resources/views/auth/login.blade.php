@@ -10,11 +10,10 @@
                         <img src="{{ asset('images/EEBLACK-sm.png')}}" alt="">
                     </a>
                 </div>
-                @if ($alert = Session::get('register-status'))
+                @if ($alert = Session::get('status'))
                     <div class="alert alert-warning">
                         {{ $alert }}
-                    </div>
-                    <p class="login-box-msg">{{ __('Login your newly registered account') }}</p>                
+                    </div>                                   
                 @else 
                     <p class="login-box-msg">{{ __('Login your account') }}</p>                
                 @endif

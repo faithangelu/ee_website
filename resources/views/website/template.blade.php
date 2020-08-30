@@ -25,30 +25,8 @@
   <!-- Custom styles for this template -->
   <link href="{{ asset('website/css/clean-blog.min.css')}} " rel="stylesheet">
   <link href="{{ asset('website/css/style-user-dashboard.css')}} " rel="stylesheet">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-</head>
-
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -59,29 +37,19 @@
             <a class="navbar-brand" href="/">
                 <img src="/images/EEBLACK-sm.png" alt="EE Logo" style="opacity: .8;" width="auto" height="50">
             </a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">                
                 <i class="fas fa-bars"></i>
             </button>            
-            <div class="collapse navbar-collapse ">
+            <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="btn btn-transparent " href="/home">Find a project</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link main-nav-link" href="about.html">My Wallet</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link main-nav-link" href="post.html">My Transactions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link main-nav-link" href="contact.html">My Investment</a>
-                    </li> -->                       
-                    <li class="nav-item btn-group" role="group">
+                    </li>                                        
+                    <li class="nav-item dropdown" >
                         <!-- <i class="fas fa-user-circle mr-1"></i>&nbsp -->
                         <a class="btn btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, {{ Auth::user()->customer_username }}</a>
                         <span class="caret"></span></button>
-                        <div class="dropdown-menu ">                                
+                        <div class="dropdown-menu dropdown-menu-right ">                                
                             <a class="dropdown-item" type="button" href="{{ route('profile') }}">My Profile</a>
                             <button class="dropdown-item" type="button">My Wallet</button>
                             <button class="dropdown-item" type="button">My Transaction</button>
@@ -108,12 +76,11 @@
                     <ul class="nav">
                         <li class="nav-item">
                             <a class="nav-link subnav-link active" href="#">For sale in</a>
-                        </li>
+                        </li>                        
                         <li class="nav-item">
-                            <a class="nav-link subnav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link subnav-link" href="#">Link</a>
+                            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+                            <i class="fas fa-th-large"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -126,14 +93,19 @@
         @yield('content')
     </div>
 
-
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
     
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('website/vendor/jquery/jquery.min.js') }} "></script>
     <script src="{{ asset('website/vendor/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
 
     <!-- Custom scripts for this template -->
+    <script src="{{ asset('website/js/adminlte.js') }} "></script>
     <script src="{{ asset('website/js/clean-blog.min.js') }} "></script>
+    <script src="{{ asset('website/js/custom.js') }} "></script>
 
 </body>
 
