@@ -9,6 +9,12 @@
 
     <section class="content">
     <div class="container-fluid">
+        @if ($alert = Session::get('status'))
+            <div class="alert alert-success">
+                {{ Session::get('message') }}
+            </div>         
+        @endif
+
         <div class="row">
           <div class="col-md-3">
             
@@ -16,7 +22,7 @@
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle" src="{{ asset('/images/man.png')}}" alt="User profile picture">
+                  <img class="profile-user-img img-fluid img-circle" src="{{ isset($users->customer_image) ? env('ASSET_URL') . '/data/uploads/' . $users->customer_image : asset('/images/man.png')}}" alt="User profile picture">
                 </div>
 
                 <h3 class="profile-username text-center">{{ $users->customer_first_name }}</h3>
@@ -25,20 +31,17 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Name</b> <a class="float-right">{{ ucfirst($users->customer_first_name . ' ' . $users->customer_last_name)}}</a>
+                    <b>Email</b> <a class="float-right">{{ isset($users->customer_email) ? $users->customer_email : 'N/A' }}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Email</b> <a class="float-right">{{ $users->customer_email }}</a>
-                  </li>
-                  <!-- <li class="list-group-item">
-                    <b>Following</b> <a class="float-right">543</a>
+                    <b>Phone</b> <a class="float-right">{{ isset($users->customer_mobile) ? ucfirst($users->customer_mobile) : 'N/A' }}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Friends</b> <a class="float-right">13,287</a>
-                  </li> -->
+                    <b>Address</b> <a class="float-right">{{ isset($users->customer_address) ? ucfirst($users->customer_address) : 'N/A' }}</a>
+                  </li>                  
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
               </div>
               <!-- /.card-body -->
             </div>
@@ -86,66 +89,65 @@
           <!-- /.col -->
           <div class="col-md-9">
             <div class="card card-primary card-outline h-100">              
-              <div class="card-body">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item"><a class="nav-link active" href="#favorites" data-toggle="tab">Favorites</a></li>
-                  <!-- <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li> -->
-                  <li class="nav-item"><a class="nav-link" href="#update" data-toggle="tab">Update Profile</a></li>
-                </ul>
-                <div class="tab-content pt-3">
-                  <div class="active tab-pane" id="favorites">
-                    test
-                  </div>
-
-                  <div class="tab-pane" id="update">
-                    <form class="form-horizontal" action="">
+              <div class="card-body">                
+                <div class="tab-content pt-3">                               
+                  <div class="active tab-pane" id="update">
+                    @foreach ($user_datas as $user_data) 
+                    <form class="form-horizontal" action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data"> 
+                      @csrf
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Profile Picture</label>
+                        <div class="col-sm-10">
+                          <!-- <span>Recommended image size is 88x88 pixels</span> -->
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="customer_image">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                          </div>
+                        </div>
+                      </div>
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" placeholder="First Name" name="customer_first_name" value="{{ old('customer_first_name') }}">
+                          <input type="text" class="form-control" placeholder="First Name" name="customer_first_name" value="{{ $user_data->customer_first_name }}">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Last Name: </label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" name="customer_last_name" placeholder="Last Name">
+                          <input type="text" class="form-control" name="customer_last_name" placeholder="Last Name" value="{{ $user_data->customer_last_name }}">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Username: </label>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" name="customer_username" placeholder="Username">
+                          <input type="text" class="form-control" name="customer_username" placeholder="Username" value="{{ $user_data->customer_username }}">
                         </div>                     
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email Address: </label>
                         <div class="col-sm-4">
-                          <input type="email" class="form-control" name="customer_email" placeholder="email@email.com">
+                          <input type="email" class="form-control" name="customer_email" placeholder="email@email.com" value="{{ $user_data->customer_email }}">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputExperience" class="col-sm-2 col-form-label">Address</label>
-                        <div class="col-sm-3 mb-2">
-                          <input class="form-control" name="customer_street" placeholder="Street, Barangay"></input>
-                        </div>
-                        <div class="col-sm-3 mb-2">
-                          <input class="form-control" name="customer_city" placeholder="City"></input>
-                        </div>
-                        <div class="col-sm-4 mb-2">
-                          <input class="form-control" name="customer_country" placeholder="Country"></input>
-                        </div>
+                        <label for="inputExperience" class="col-sm-2 col-form-label">Complete Address</label>
+                        <div class="col-sm-10">
+                          <input class="form-control" name="customer_address" placeholder="Street, Barangay, City, Country, Postal Code" value="{{ $user_data->customer_address }}">
+                        </div>                        
                       </div>
                       <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">Mobile Number</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" class="customer_mobile" placeholder="09123456789">
+                          <input type="text" class="form-control" name="customer_mobile" placeholder="09123456789" value="{{ $user_data->customer_mobile }}">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">User Type</label>
                         <div class="col-sm-10">
                           <select name="customer_user_type" class="form-control">
-                            <option value="investor">Investor</option>
-                            <option value="proponent">Proponent</option>
-                          </select>
+                            @php $dropdowns = array('investor', 'proponent') @endphp
+                            @foreach ($dropdowns as $dropdown)
+                              <option value="{{ $dropdown }}" {{ ($user_data->customer_user_type == $dropdown) ? 'selected' : '' }} > {{ ucfirst($dropdown) }}</option>
+                            @endforeach
+                          </select>                          
                         </div>
                       </div>
                       <div class="form-group row">
@@ -170,10 +172,13 @@
                       </div> -->
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
+                          <input name="_method" type="hidden" value="PUT">
+                          <input name="id" type="hidden" value="{{ $user_data->id}}">
                           <button type="submit" class="btn btn-danger">Submit</button>
                         </div>
                       </div>
                     </form>
+                    @endforeach
                   </div>
                   <!-- /.tab-pane -->
                 </div>

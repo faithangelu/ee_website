@@ -15,9 +15,11 @@ class WebsiteController extends Controller
    
     public function index() 
     {
+        $user = Auth::user();
         $marketplaces = DB::select('select * from marketplaces');
+        // print_r($user); exit;
 
-        return view('index', ['marketplaces'=>$marketplaces]);
+        return view('index', ['marketplaces'=>$marketplaces, 'user'=>$user]);
     }
     public function login() 
     {
