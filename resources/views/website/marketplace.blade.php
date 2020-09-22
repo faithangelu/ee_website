@@ -12,11 +12,12 @@
 
     <section class="content">
         <div class="container">
+            @if ($marketplaces)            
             <div class="row">
                 @foreach ($marketplaces as $marketplace)
                     <div class="col-lg-4 col-sm-6">
                         <div class="card">
-                            <img src="{{ ($marketplace->project_image != '') ? env('CMS_URL') . '/' . $marketplace->project_image : env('CMS_URL') . '/images/EEBLACK-sm.png' }}" class="card-img-top" alt="{{ $marketplace->project_name }}" height="200" >                    
+                            <img src="{{ ($marketplace->project_image != '') ? env('ASSET_URL') . '/' . $marketplace->project_image : env('CMS_URL') . '/images/EEBLACK-sm.png' }}" class="card-img-top" alt="{{ $marketplace->project_name }}" height="200" >                    
                             <a class="rounded-circle bg-light" id="favorite" data-toggle="tooltip" data-placement="top" title="Add to your favorites!"> 
                                 <i class="fa fa-heart" id="heart-{{ $marketplace->project_id }}"></i>
                             </a>
@@ -51,16 +52,21 @@
                                         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCVMX3zAxcVpJrr_BrOHz0_fyWRpCPCAEE&q=PHILERGY+GERMAN+SOLAR+PHILIPPINES,Philippines" allowfullscreen>
                                     </iframe>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary btn-sm">Save changes</button>
-                                </div>
+                                <!-- <div class="modal-footer"> -->
+                                    <!-- <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button> -->
+                                    <!-- <button type="button" class="btn btn-primary btn-sm">Save changes</button> -->
+                                <!-- </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>                    
                 @endforeach                
             </div>
+            @else
+            <div class="alert alert-info">
+                No available project.
+            </div>
+            @endif
         </div>        
     </section>
 @endsection

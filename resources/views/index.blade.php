@@ -63,7 +63,11 @@
             <a class="nav-link text-light text-uppercase" href="#">Blog <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item align-self-center">
+            @if (isset($user->id)) 
+            <a class="nav-link text-light text-uppercase" href="{{ route('home') }}">MY Portal <span class="sr-only">(current)</span></a>
+            @else 
             <a class="nav-link text-light text-uppercase" href="{{ route('login') }}">Login <span class="sr-only">(current)</span></a>
+            @endif
           </li>
         </ul>
       </div>
@@ -84,7 +88,7 @@
             
             <div class="input-group w-75 mx-auto">
               <select class="custom-select text-center rounded-0"  id="inputGroupSelect02" aria-placeholder="FIND A LOCATION">
-                <option selected class="placeholder">FIND A LOCATION</option>
+                <option selected class="placeholder" disabled>FIND A LOCATION</option>
                 @foreach ($marketplaces as $marketplace)
                 <option value="3">{{ $marketplace->project_location }}</option>
                 @endforeach

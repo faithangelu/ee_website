@@ -13264,9 +13264,8 @@ html.control-sidebar-animate {
 .control-sidebar {
   bottom: calc(3.5rem + 1px);
   position: absolute;
-  top: calc(8rem + 1px);
+  top: calc(3.5rem + 1px);
   z-index: 1031;
-  height: 100vh;
 }
 
 .control-sidebar, .control-sidebar::before {
@@ -15889,7 +15888,7 @@ textarea.form-control.is-warning {
 }
 
 .card-primary.card-outline {
-  border-top: 3px solid #343a40;
+  border-top: 3px solid #007bff;
 }
 
 .card-primary.card-outline-tabs > .card-header a:hover {
