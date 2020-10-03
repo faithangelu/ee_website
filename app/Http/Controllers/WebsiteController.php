@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 Use App\Customer;
+Use App\User_projects;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -58,6 +59,13 @@ class WebsiteController extends Controller
         if (Auth::attempt($credentials)) {            
             return redirect()->intended('/home')->with('register-success', 'Welcome, ' . Auth::user()->customer_username);
         }
+    }
+
+    public function favorite(Request $request) {
+        print_r($request->all()); exit;
+        // $fav = User_projects::findOrFail($request->id);
+
+        // print_r($fav);
     }
 }
 

@@ -18,6 +18,7 @@ class Customer extends Authenticatable
         'customer_address',
         'customer_mobile',
         'customer_user_type',
+        'customer_image',
         'password',
         // 'customer_status',
     ];

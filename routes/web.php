@@ -29,4 +29,6 @@ Route::get('profile', 'UserController@profile')->name('profile');
 Route::post('profile', 'UserController@profile')->name('profile');
 Route::put('profile/update', 'UserController@update')->name('profile.update');
 
+Route::post('marketplace/favorite', 'WebsiteController@favorite')->name('favorite');
+
 

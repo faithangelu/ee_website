@@ -54,6 +54,7 @@ class AuthController extends Controller
         ]);
         
         $registrants = New Customer;
+        $registrants->customer_image       = ($request->customer_image) ? $request->customer_image : '' ;
         $registrants->customer_first_name  = $request->customer_first_name;
         $registrants->customer_last_name   = $request->customer_last_name;
         $registrants->customer_email       = $request->customer_email;

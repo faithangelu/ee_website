@@ -8,6 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{ config('app.name', 'Energy Exchange') }}</title>
 
@@ -47,7 +48,7 @@
                         <a class="btn btn-transparent " href="/home">Find a project</a>
                     </li>                                        
                     <li class="nav-item dropdown" >
-                        <a class="btn btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, {{ Auth::user()->customer_username }}</a>
+                        <a class="btn btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-id="{{ Auth::user()->customer_username }}">Hi, {{ Auth::user()->customer_username }}</a>
                         <span class="caret"></span></button>
                         <div class="dropdown-menu dropdown-menu-right ">                                
                             <a class="dropdown-item" type="button" href="{{ route('profile') }}">My Profile</a>
@@ -105,7 +106,7 @@
         </div>
         <div class="modal-body">
             <form>
-                <div class="form-row">
+                <div class="form-group">
                     <label for="filter">Location/Project</label>
                     <input type="text" class="form-control" id="inputEmail4" placeholder="Location">
                 </div>
@@ -148,6 +149,7 @@
     
     <script>
         
+        let app_url = '{{ config("APP_URL") }}'; 
         function openNav() {
             document.getElementById("mySidenav").style.width = "300px";
         }
@@ -159,7 +161,6 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('website/vendor/jquery/jquery.min.js') }} "></script>
     <script src="{{ asset('website/vendor/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
     <script src="offcanvas.js"></script>
 
@@ -167,6 +168,9 @@
     <script src="{{ asset('website/js/adminlte.js') }} "></script>
     <script src="{{ asset('website/js/clean-blog.min.js') }} "></script>
     <script src="{{ asset('website/js/custom.js') }} "></script>
+    <script type="text/javascript">
+        var token = '{{ csrf_token() }}';
+    </script>
 
 </body>
 

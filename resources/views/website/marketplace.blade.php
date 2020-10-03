@@ -19,7 +19,7 @@
                         <div class="card">
                             <img src="{{ ($marketplace->project_image != '') ? env('ASSET_URL') . '/' . $marketplace->project_image : env('CMS_URL') . '/images/EEBLACK-sm.png' }}" class="card-img-top" alt="{{ $marketplace->project_name }}" height="200" >                    
                             <a class="rounded-circle bg-light" id="favorite" data-toggle="tooltip" data-placement="top" title="Add to your favorites!"> 
-                                <i class="fa fa-heart" id="heart-{{ $marketplace->project_id }}"></i>
+                                <i class="fa fa-heart" id="heart-{{ $marketplace->project_id }}" data-id="{{ $marketplace->project_id }}"></i>
                             </a>
                         
                             <div class="card-body h-100">
